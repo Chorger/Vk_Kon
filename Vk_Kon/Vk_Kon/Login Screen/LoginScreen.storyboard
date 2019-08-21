@@ -18,8 +18,51 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TRw-V2-bif">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TRw-V2-bif">
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="AppLogo" translatesAutoresizingMaskIntoConstraints="NO" id="2Mj-Vu-XXt">
+                                        <rect key="frame" x="87" y="0.0" width="240" height="250"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="240" id="BgQ-RH-qHZ"/>
+                                            <constraint firstAttribute="height" constant="250" id="Ths-ez-cwt"/>
+                                        </constraints>
+                                    </imageView>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email or password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lBN-B0-dbr">
+                                        <rect key="frame" x="127" y="394" width="160" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits" textContentType="username"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="29u-dt-p1v">
+                                        <rect key="frame" x="159.5" y="444" width="95" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sFk-zW-qmb">
+                                        <rect key="frame" x="156" y="514" width="102" height="38"/>
+                                        <color key="backgroundColor" red="0.25490196078431371" green="0.42352941176470588" blue="0.66274509803921566" alpha="1" colorSpace="calibratedRGB"/>
+                                        <inset key="contentEdgeInsets" minX="30" minY="10" maxX="30" maxY="10"/>
+                                        <state key="normal" title="Log in">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="2Mj-Vu-XXt" firstAttribute="centerX" secondItem="TRw-V2-bif" secondAttribute="centerX" id="0RW-OZ-w2W"/>
+                                    <constraint firstItem="sFk-zW-qmb" firstAttribute="top" secondItem="29u-dt-p1v" secondAttribute="bottom" constant="40" id="2hv-pX-l1a"/>
+                                    <constraint firstItem="29u-dt-p1v" firstAttribute="centerX" secondItem="TRw-V2-bif" secondAttribute="centerX" id="E7e-wn-NPc"/>
+                                    <constraint firstItem="lBN-B0-dbr" firstAttribute="centerX" secondItem="TRw-V2-bif" secondAttribute="centerX" id="NR4-Lh-AtI"/>
+                                    <constraint firstItem="sFk-zW-qmb" firstAttribute="centerX" secondItem="TRw-V2-bif" secondAttribute="centerX" id="SNl-Zn-n5W"/>
+                                    <constraint firstItem="lBN-B0-dbr" firstAttribute="centerY" secondItem="TRw-V2-bif" secondAttribute="centerY" id="d1i-pk-tIm"/>
+                                    <constraint firstItem="29u-dt-p1v" firstAttribute="top" secondItem="lBN-B0-dbr" secondAttribute="bottom" constant="20" id="keo-Bp-P6h"/>
+                                </constraints>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -34,7 +77,10 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QjO-1U-YoN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="259" y="-126"/>
+            <point key="canvasLocation" x="257.97101449275362" y="-126.5625"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="AppLogo" width="1200" height="1600"/>
+    </resources>
 </document>
