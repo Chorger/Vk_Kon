@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		42E4AE64230D77F600FA9CE9 /* LoginScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42E4AE63230D77F600FA9CE9 /* LoginScreen.storyboard */; };
+		42E4AE66230D781300FA9CE9 /* LoginScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E4AE65230D781300FA9CE9 /* LoginScreenVC.swift */; };
 		42EF8D46230BDDFF00F1ADD2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42EF8D45230BDDFF00F1ADD2 /* AppDelegate.swift */; };
 		42EF8D48230BDDFF00F1ADD2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42EF8D47230BDDFF00F1ADD2 /* ViewController.swift */; };
 		42EF8D4B230BDDFF00F1ADD2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42EF8D49230BDDFF00F1ADD2 /* Main.storyboard */; };
@@ -34,6 +36,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		42E4AE63230D77F600FA9CE9 /* LoginScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginScreen.storyboard; sourceTree = "<group>"; };
+		42E4AE65230D781300FA9CE9 /* LoginScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreenVC.swift; sourceTree = "<group>"; };
 		42EF8D42230BDDFF00F1ADD2 /* Vk_Kon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Vk_Kon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		42EF8D45230BDDFF00F1ADD2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		42EF8D47230BDDFF00F1ADD2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -74,6 +78,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		42E4AE62230D77E400FA9CE9 /* Login Screen */ = {
+			isa = PBXGroup;
+			children = (
+				42E4AE63230D77F600FA9CE9 /* LoginScreen.storyboard */,
+				42E4AE65230D781300FA9CE9 /* LoginScreenVC.swift */,
+			);
+			path = "Login Screen";
+			sourceTree = "<group>";
+		};
 		42EF8D39230BDDFF00F1ADD2 = {
 			isa = PBXGroup;
 			children = (
@@ -97,6 +110,7 @@
 		42EF8D44230BDDFF00F1ADD2 /* Vk_Kon */ = {
 			isa = PBXGroup;
 			children = (
+				42E4AE62230D77E400FA9CE9 /* Login Screen */,
 				42EF8D45230BDDFF00F1ADD2 /* AppDelegate.swift */,
 				42EF8D47230BDDFF00F1ADD2 /* ViewController.swift */,
 				42EF8D49230BDDFF00F1ADD2 /* Main.storyboard */,
@@ -231,6 +245,7 @@
 			files = (
 				42EF8D50230BDE0000F1ADD2 /* LaunchScreen.storyboard in Resources */,
 				42EF8D4D230BDE0000F1ADD2 /* Assets.xcassets in Resources */,
+				42E4AE64230D77F600FA9CE9 /* LoginScreen.storyboard in Resources */,
 				42EF8D4B230BDDFF00F1ADD2 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -256,6 +271,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				42E4AE66230D781300FA9CE9 /* LoginScreenVC.swift in Sources */,
 				42EF8D48230BDDFF00F1ADD2 /* ViewController.swift in Sources */,
 				42EF8D46230BDDFF00F1ADD2 /* AppDelegate.swift in Sources */,
 			);
