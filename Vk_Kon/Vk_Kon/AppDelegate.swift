@@ -16,11 +16,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        let storyboard = UIStoryboard(name: "LoginScreen", bundle: nil)
-        self.window = UIWindow()
-        
-        let loginScreenC = storyboard.instantiateViewController(withIdentifier: "loginScreenController")
-        self.window?.rootViewController = loginScreenC
+        if !UserDefaults.standard.bool(forKey: "IsLoginned") {
+            let storyboard = UIStoryboard(name: "LoginScreen", bundle: nil)
+            self.window = UIWindow()
+            
+            let loginScreenC = storyboard.instantiateViewController(withIdentifier: "loginScreenController")
+            self.window?.rootViewController = loginScreenC
+        }
         
         return true
     }

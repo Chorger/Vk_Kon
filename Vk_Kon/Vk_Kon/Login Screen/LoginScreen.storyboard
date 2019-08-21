@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TRw-V2-bif">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TRw-V2-bif">
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AppLogo" translatesAutoresizingMaskIntoConstraints="NO" id="2Mj-Vu-XXt">
@@ -31,6 +31,7 @@
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email or password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lBN-B0-dbr">
                                         <rect key="frame" x="107" y="394" width="200" height="30"/>
                                         <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="dh8-rx-VcG"/>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="tOS-Ia-oHJ"/>
                                         </constraints>
                                         <nil key="textColor"/>
@@ -59,16 +60,20 @@
                                                 <integer key="value" value="5"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="loginButtonPressed:" destination="yfm-eC-17V" eventType="touchUpInside" id="EgC-qF-5y5"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="2Mj-Vu-XXt" firstAttribute="centerX" secondItem="TRw-V2-bif" secondAttribute="centerX" id="0RW-OZ-w2W"/>
                                     <constraint firstItem="sFk-zW-qmb" firstAttribute="top" secondItem="29u-dt-p1v" secondAttribute="bottom" constant="40" id="2hv-pX-l1a"/>
-                                    <constraint firstAttribute="bottom" secondItem="sFk-zW-qmb" secondAttribute="bottom" constant="263" id="CkM-55-Kku"/>
                                     <constraint firstItem="2Mj-Vu-XXt" firstAttribute="top" secondItem="TRw-V2-bif" secondAttribute="top" id="Dfo-va-4CQ"/>
                                     <constraint firstItem="29u-dt-p1v" firstAttribute="centerX" secondItem="TRw-V2-bif" secondAttribute="centerX" id="E7e-wn-NPc"/>
                                     <constraint firstItem="lBN-B0-dbr" firstAttribute="centerX" secondItem="TRw-V2-bif" secondAttribute="centerX" id="NR4-Lh-AtI"/>
-                                    <constraint firstAttribute="trailing" secondItem="2Mj-Vu-XXt" secondAttribute="trailing" constant="87" id="PB0-KW-tQs"/>
+                                    <constraint firstAttribute="trailing" secondItem="2Mj-Vu-XXt" secondAttribute="trailing" id="PB0-KW-tQs"/>
+                                    <constraint firstAttribute="bottom" secondItem="sFk-zW-qmb" secondAttribute="bottom" id="PLU-VP-z1B"/>
+                                    <constraint firstItem="lBN-B0-dbr" firstAttribute="top" relation="greaterThanOrEqual" secondItem="2Mj-Vu-XXt" secondAttribute="bottom" id="PWg-DE-MUu"/>
                                     <constraint firstItem="sFk-zW-qmb" firstAttribute="centerX" secondItem="TRw-V2-bif" secondAttribute="centerX" id="SNl-Zn-n5W"/>
                                     <constraint firstItem="lBN-B0-dbr" firstAttribute="centerY" secondItem="TRw-V2-bif" secondAttribute="centerY" id="d1i-pk-tIm"/>
                                     <constraint firstItem="29u-dt-p1v" firstAttribute="top" secondItem="lBN-B0-dbr" secondAttribute="bottom" constant="20" id="keo-Bp-P6h"/>
@@ -84,6 +89,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="SzQ-Qd-a3w"/>
                     </view>
+                    <connections>
+                        <outlet property="scrollView" destination="TRw-V2-bif" id="QxZ-ST-sb0"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QjO-1U-YoN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
