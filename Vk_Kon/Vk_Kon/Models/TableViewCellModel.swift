@@ -1,5 +1,5 @@
 //
-//  Group.swift
+//  User.swift
 //  Vk_Kon
 //
 //  Created by Timofey Koloshenko on 22/08/2019.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Group {
+class TableViewCellModel {
     var name : String
     var image : String
     

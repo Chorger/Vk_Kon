@@ -10,14 +10,14 @@ import UIKit
 
 class friendsTVC: UITableViewController {
     
-    var friendsList : [User] = []
+    var friendsList : [TableViewCellModel] = []
     var imagesNames : [String] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        friendsList.append(User(name: "Аня Мех", image: "message_annImage"))
-        friendsList.append(User(name: "Ася Гагарина", image: "asyagagarinamskImage"))
+        friendsList.append(TableViewCellModel(name: "Аня Мех", image: "message_annImage"))
+        friendsList.append(TableViewCellModel(name: "Ася Гагарина", image: "asyagagarinamskImage"))
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -27,6 +27,11 @@ class friendsTVC: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "friendCell", for: indexPath)
 
+        // Make 'em round
+        cell.imageView!.layer.cornerRadius = 20
+        cell.imageView!.layer.borderWidth = 1.0
+        cell.imageView!.layer.masksToBounds = true
+        
         cell.imageView!.image = UIImage(named: friendsList[indexPath.row].image)
         cell.textLabel!.text = friendsList[indexPath.row].name
 
@@ -54,6 +59,18 @@ class friendsTVC: UITableViewController {
         imagesNames = []
      }
 
+    @IBAction func addButtonPress(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "searchForNew", bundle: nil)
+        let mainViewController = storyboard.instantiateInitialViewController()!
+        let vc = mainViewController as! searchForNewTVC
+        
+        var newFriendsList : [TableViewCellModel] = []
+        newFriendsList.append(TableViewCellModel(name: "Борис Неклюдов", image: "borisneklyudovImage"))
+        newFriendsList.append(TableViewCellModel(name: "Alex Ghost", image: "alexus_ghostImage"))
+        
+        vc.elementsList = newFriendsList
+        present(vc, animated: true)
+    }
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {

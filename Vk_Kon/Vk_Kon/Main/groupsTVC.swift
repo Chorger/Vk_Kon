@@ -10,13 +10,13 @@ import UIKit
 
 class groupsTVC: UITableViewController {
 
-    var groups : [Group] = []
+    var groups : [TableViewCellModel] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        groups.append(Group(name: "Strogino Group", image: "stroginoGroupLogo"))
-        groups.append(Group(name: "flattmatt", image: "flattmattLogo"))
+        groups.append(TableViewCellModel(name: "Strogino Group", image: "stroginoGroupLogo"))
+        groups.append(TableViewCellModel(name: "flattmatt", image: "flattmattLogo"))
         
         self.navigationItem.rightBarButtonItem = self.editButtonItem
 
@@ -31,7 +31,10 @@ class groupsTVC: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "groupCell", for: indexPath)
 
-        // Configure the cell...
+        // Make 'em round
+        cell.imageView!.layer.cornerRadius = 20
+        cell.imageView!.layer.borderWidth = 1.0
+        cell.imageView!.layer.masksToBounds = true
         
         cell.imageView!.image = UIImage(named: groups[indexPath.row].image)
         cell.textLabel!.text = groups[indexPath.row].name
