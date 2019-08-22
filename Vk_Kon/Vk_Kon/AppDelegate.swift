@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let storyboard = UIStoryboard(name: "LoginScreen", bundle: nil)
             self.window = UIWindow()
             
-            let loginScreenC = storyboard.instantiateViewController(withIdentifier: "loginScreenController")
+            let loginScreenC = storyboard.instantiateInitialViewController()!
             self.window?.rootViewController = loginScreenC
         }
         
