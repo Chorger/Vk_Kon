@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		42115E86230E9DDF00C8C85E /* friendsImagesViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42115E85230E9DDF00C8C85E /* friendsImagesViewCell.swift */; };
 		4242B84E230D98450008ECE6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4242B84D230D98450008ECE6 /* Assets.xcassets */; };
 		4242B850230E6C2E0008ECE6 /* friendsTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4242B84F230E6C2E0008ECE6 /* friendsTVC.swift */; };
 		4242B85A230E6E8E0008ECE6 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4242B859230E6E8E0008ECE6 /* User.swift */; };
@@ -41,6 +42,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		42115E85230E9DDF00C8C85E /* friendsImagesViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = friendsImagesViewCell.swift; sourceTree = "<group>"; };
 		4242B84D230D98450008ECE6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4242B84F230E6C2E0008ECE6 /* friendsTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = friendsTVC.swift; sourceTree = "<group>"; };
 		4242B859230E6E8E0008ECE6 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -91,6 +93,7 @@
 		4242B851230E6CD10008ECE6 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				42115E85230E9DDF00C8C85E /* friendsImagesViewCell.swift */,
 				42EF8D49230BDDFF00F1ADD2 /* Main.storyboard */,
 				4242B84F230E6C2E0008ECE6 /* friendsTVC.swift */,
 				42EF8D47230BDDFF00F1ADD2 /* MainVC.swift */,
@@ -309,6 +312,7 @@
 				4242B85E230E77C40008ECE6 /* groupsTVC.swift in Sources */,
 				4242B85A230E6E8E0008ECE6 /* User.swift in Sources */,
 				4242B860230E7D010008ECE6 /* friendsImagesCVC.swift in Sources */,
+				42115E86230E9DDF00C8C85E /* friendsImagesViewCell.swift in Sources */,
 				4242B850230E6C2E0008ECE6 /* friendsTVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
