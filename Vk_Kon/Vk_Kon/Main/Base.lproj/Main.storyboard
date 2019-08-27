@@ -187,14 +187,15 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="FbL-wF-4ul" kind="relationship" relationship="viewControllers" id="WvI-L0-pQd"/>
-                        <segue destination="r2D-KY-apB" kind="relationship" relationship="viewControllers" id="cSU-28-hnh"/>
-                        <segue destination="96U-ao-tcQ" kind="relationship" relationship="viewControllers" id="UGI-uf-vfa"/>
+                        <segue destination="3ZL-Qh-swS" kind="relationship" relationship="viewControllers" id="t8D-1S-Uhm"/>
+                        <segue destination="FbL-wF-4ul" kind="relationship" relationship="viewControllers" id="Af5-g8-IQ0"/>
+                        <segue destination="r2D-KY-apB" kind="relationship" relationship="viewControllers" id="dB9-vu-x7e"/>
+                        <segue destination="96U-ao-tcQ" kind="relationship" relationship="viewControllers" id="JwP-uA-BcK"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SRf-pX-7u2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1168" y="94"/>
+            <point key="canvasLocation" x="1154" y="94"/>
         </scene>
         <!--GroupsTVC-->
         <scene sceneID="mfo-rC-FeP">
@@ -255,6 +256,25 @@
             </objects>
             <point key="canvasLocation" x="2799" y="94"/>
         </scene>
+        <!--News-->
+        <scene sceneID="FAc-xM-45v">
+            <objects>
+                <tableViewController id="3ZL-Qh-swS" customClass="NewsTVC" customModule="Vk_Kon" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="ncu-aW-jLW">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <connections>
+                            <outlet property="dataSource" destination="3ZL-Qh-swS" id="O17-lA-ypc"/>
+                            <outlet property="delegate" destination="3ZL-Qh-swS" id="TON-DJ-ayZ"/>
+                        </connections>
+                    </tableView>
+                    <tabBarItem key="tabBarItem" title="News" image="newsIcon" id="3LG-LK-HLO"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DqR-2s-rhC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1931" y="-1227"/>
+        </scene>
         <!--Friends-->
         <scene sceneID="8Nb-fS-ZgV">
             <objects>
@@ -299,5 +319,6 @@
         <image name="friendsIcon" width="30" height="30"/>
         <image name="groupsIcon" width="32" height="32"/>
         <image name="homeIcon" width="30" height="30"/>
+        <image name="newsIcon" width="30" height="30"/>
     </resources>
 </document>

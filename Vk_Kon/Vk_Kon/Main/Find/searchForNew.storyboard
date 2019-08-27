@@ -68,5 +68,23 @@
             </objects>
             <point key="canvasLocation" x="1000.0000000000001" y="80.357142857142847"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="q35-dI-Y7x">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rhQ-ep-RhG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="8Jd-gb-omN" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="wbT-7a-PFn">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="NfK-Ma-GDE" kind="relationship" relationship="rootViewController" id="7Vs-rL-cs3"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="89.855072463768124" y="80.357142857142847"/>
+        </scene>
     </scenes>
 </document>
