@@ -8,7 +8,15 @@
 
 import Foundation
 
-class TableViewCellModel {
+class TableViewCellModel : Comparable {
+    static func < (lhs: TableViewCellModel, rhs: TableViewCellModel) -> Bool {
+        return lhs.name < rhs.name
+    }
+    
+    static func == (lhs: TableViewCellModel, rhs: TableViewCellModel) -> Bool {
+        return lhs.name == rhs.name
+    }
+    
     var name : String
     var image : String
     

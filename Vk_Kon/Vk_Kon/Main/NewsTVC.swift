@@ -18,10 +18,28 @@ class NewsTVC: UITableViewController {
         tableView.register(UINib(nibName: "newsCell", bundle: nil),
                            forCellReuseIdentifier: "newsCell")
         
+        
+        tableView.rowHeight = UITableView.automaticDimension
+        
+        tableView.reloadData()
+        
         newsList.append(NewsCellModel(source: "Dodo Pizza", avatarImage: "dodoImage",
                                       optionalImage: "dodoCupImage",
                                       optionalText: "Дарим стаканчику вторую жизнь ♻",
-                                      amountOfLikes: 268, amountOfViews: 32000))
+                                      amountOfLikes: 268, amountOfViews: 32367))
+        newsList.append(NewsCellModel(source: "flattmatt", avatarImage: "flattmattLogo",
+                                      optionalImage: "flattmattFujiImage",
+                                      optionalText: "Будь спокоен как Фудзи",
+                                      amountOfLikes: 91, amountOfViews: 4431))
+        newsList.append(NewsCellModel(source: "MAGIC MINIST", avatarImage: "magicministLogo",
+                                      optionalImage: "magicministImage",
+                                      optionalText: """
+                                                    Ваш близкий все ждёт письмо?😀✉\n
+                                                    Так сделайте ему ПОДАРОК😅😍\n\n
+                                                    Для заказа пишите нашему менеджеру Марии💃\n
+                                                    Отвечаем в любое время
+                                                    """,
+                                      amountOfLikes: 5, amountOfViews: 439))
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -39,7 +57,27 @@ class NewsTVC: UITableViewController {
             UIImage(named: newsList[indexPath.row].optionalImage)
         cell.optionalTextLabel.text = newsList[indexPath.row].optionalText
         cell.amountOfLikes = newsList[indexPath.row].amountOfLikes
-        cell.amountOfViewsLabel.text = String(newsList[indexPath.row].amountOfViews)
+        cell.likeButton.setTitle("♡ " +
+            String(newsList[indexPath.row].amountOfLikes), for: .normal)
+        cell.amountOfViewsLabel.text = "👁‍🗨 " + String(newsList[indexPath.row].amountOfViews)
+        
+        let percentage = (cell.optionalImageImageView?.bounds.width ?? 326) / UIScreen.main.bounds.width
+        print("Соотношение между шириной imageView и рамками зоны")
+        print(percentage)
+        let result = UIImage(named: newsList[indexPath.row].optionalImage)!.size.width /
+            cell.optionalImageImageView!.bounds.width
+        
+        cell.optionalImageImageView.frame =
+            CGRect(x: 0, y: 0, width: cell.optionalImageImageView!.bounds.width,
+                   height: UIImage(named: newsList[indexPath.row].optionalImage)!.size.height / result)
+        print("Высота imageView")
+        print(UIImage(named: newsList[indexPath.row].optionalImage)!.size.height / result)
+        
+        print("Высота после настройки")
+        print(cell.optionalImageImageView.bounds.height)
+        
+//        UIImage(named: newsList[indexPath.row].optionalImage)?.size.width
+        print("")
 
         return cell
     }

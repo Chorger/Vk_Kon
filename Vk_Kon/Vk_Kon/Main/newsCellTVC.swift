@@ -22,7 +22,6 @@ class newsCellTVC: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        likeButton.setTitle("♡ " + String(amountOfLikes), for: .normal)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -36,7 +35,7 @@ class newsCellTVC: UITableViewCell {
         sourceLabel.text = nil
         optionalTextLabel.text = nil
         optionalImageImageView.image = nil
-        likeButton.setTitle(nil, for: .normal)
+        likeButton.setTitle("", for: .normal)
     }
     
     @IBAction func likeButtonPressed(_ sender: Any) {

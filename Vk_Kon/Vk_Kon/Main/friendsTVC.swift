@@ -11,6 +11,7 @@ import UIKit
 class friendsTVC: UITableViewController {
     
     var friendsList : [TableViewCellModel] = []
+//    var friendsNames : [FriendNameModel] = []
     var imagesNames : [String] = []
 
     override func viewDidLoad() {
@@ -18,6 +19,8 @@ class friendsTVC: UITableViewController {
 
         friendsList.append(TableViewCellModel(name: "Аня Мех", image: "message_annImage"))
         friendsList.append(TableViewCellModel(name: "Ася Гагарина", image: "asyagagarinamskImage"))
+        
+        friendsList.sort(by: >)       
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
