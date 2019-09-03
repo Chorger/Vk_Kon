@@ -60,8 +60,15 @@ class NewsTVC: UITableViewController {
             UIImage(named: newsList[indexPath.row].optionalImage)
         cell.optionalTextLabel.text = newsList[indexPath.row].optionalText
         cell.amountOfLikes = newsList[indexPath.row].amountOfLikes
-        cell.likeButton.setTitle("♡ " +
-            String(newsList[indexPath.row].amountOfLikes), for: .normal)
+        
+        if newsList[indexPath.row].amountOfLikes > 1000 {
+            cell.likeButton.setTitle("♡ " +
+                String(newsList[indexPath.row].amountOfLikes / 1000) + "K", for: .normal)
+        }
+        else {
+            cell.likeButton.setTitle("♡ " +
+                String(newsList[indexPath.row].amountOfLikes), for: .normal)
+        }
         
         if newsList[indexPath.row].amountOfViews > 1000 {
             cell.amountOfViewsLabel.text = "👁‍🗨 " + String(newsList[indexPath.row].amountOfViews / 1000) + "K"
