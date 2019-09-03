@@ -14,16 +14,19 @@ class NewsCellModel {
     var optionalImage : String
     var optionalText : String
     var amountOfLikes : Int
+    var isLiked : Bool
     var amountOfViews : Int
     
     init(source : String, avatarImage : String,
          optionalImage : String, optionalText : String,
-         amountOfLikes : Int, amountOfViews : Int) {
+         amountOfLikes : Int, isLiked : Bool,
+         amountOfViews : Int) {
         self.source = source
         self.avatarImage = avatarImage
         self.optionalImage = optionalImage
         self.optionalText = optionalText
         self.amountOfLikes = amountOfLikes
+        self.isLiked = isLiked
         self.amountOfViews = amountOfViews
     }
 }

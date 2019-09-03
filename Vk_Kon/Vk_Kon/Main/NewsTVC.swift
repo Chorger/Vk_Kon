@@ -26,11 +26,13 @@ class NewsTVC: UITableViewController {
         newsList.append(NewsCellModel(source: "Dodo Pizza", avatarImage: "dodoImage",
                                       optionalImage: "dodoCupImage",
                                       optionalText: "Дарим стаканчику вторую жизнь ♻",
-                                      amountOfLikes: 268, amountOfViews: 32367))
+                                      amountOfLikes: 268, isLiked : false,
+                                      amountOfViews: 32367))
         newsList.append(NewsCellModel(source: "flattmatt", avatarImage: "flattmattLogo",
                                       optionalImage: "flattmattFujiImage",
                                       optionalText: "Будь спокоен как Фудзи",
-                                      amountOfLikes: 91, amountOfViews: 4431))
+                                      amountOfLikes: 91, isLiked : false,
+                                      amountOfViews: 4431))
         newsList.append(NewsCellModel(source: "MAGIC MINIST", avatarImage: "magicministLogo",
                                       optionalImage: "magicministImage",
                                       optionalText: """
@@ -39,7 +41,8 @@ class NewsTVC: UITableViewController {
                                                     Для заказа пишите нашему менеджеру Марии💃\n
                                                     Отвечаем в любое время
                                                     """,
-                                      amountOfLikes: 5, amountOfViews: 439))
+                                      amountOfLikes: 5, isLiked : false,
+                                      amountOfViews: 439))
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -59,7 +62,13 @@ class NewsTVC: UITableViewController {
         cell.amountOfLikes = newsList[indexPath.row].amountOfLikes
         cell.likeButton.setTitle("♡ " +
             String(newsList[indexPath.row].amountOfLikes), for: .normal)
-        cell.amountOfViewsLabel.text = "👁‍🗨 " + String(newsList[indexPath.row].amountOfViews)
+        
+        if newsList[indexPath.row].amountOfViews > 1000 {
+            cell.amountOfViewsLabel.text = "👁‍🗨 " + String(newsList[indexPath.row].amountOfViews / 1000) + "K"
+        }
+        else {
+            cell.amountOfViewsLabel.text = "👁‍🗨 " + String(newsList[indexPath.row].amountOfViews)
+        }
         
         let percentage = (cell.optionalImageImageView?.bounds.width ?? 326) / UIScreen.main.bounds.width
         print("Соотношение между шириной imageView и рамками зоны")

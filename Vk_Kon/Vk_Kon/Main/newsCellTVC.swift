@@ -19,6 +19,7 @@ class newsCellTVC: UITableViewCell {
     
     var amountOfLikes : Int = 0
     var liked : Bool = false
+//    inout newsList : [NewsCellModel] = []
     
     override func awakeFromNib() {
         super.awakeFromNib()

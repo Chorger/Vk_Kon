@@ -8,6 +8,13 @@
 
 import UIKit
 
+extension friendsTVC : newFriendData {
+    func addFriend(friendData: TableViewCellModel) {
+        friendsList.append(friendData)
+        tableView.reloadData()
+    }
+}
+
 class friendsTVC: UITableViewController {
     
     var friendsList : [TableViewCellModel] = []
@@ -41,6 +48,7 @@ class friendsTVC: UITableViewController {
         return cell
     }
     
+    // row selected
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 0 {
             for index in 1...5 {
@@ -72,6 +80,7 @@ class friendsTVC: UITableViewController {
         newFriendsList.append(TableViewCellModel(name: "Alex Ghost", image: "alexus_ghostImage"))
         
         vc.elementsList = newFriendsList
+        vc.friendDataDelegate = self
         present(vc, animated: true)
     }
     /*

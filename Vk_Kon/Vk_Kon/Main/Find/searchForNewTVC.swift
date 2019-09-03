@@ -8,7 +8,13 @@
 
 import UIKit
 
+protocol newFriendData : UITableViewController {
+    func addFriend(friendData : TableViewCellModel)
+}
+
 class searchForNewTVC: UITableViewController {
+    
+    weak var friendDataDelegate : newFriendData?
     
     var elementsList : [TableViewCellModel] = []
 
@@ -33,7 +39,13 @@ class searchForNewTVC: UITableViewController {
 
         return cell
     }
-
+    
+    // row selected
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        friendDataDelegate?.addFriend(friendData: elementsList[indexPath.row])
+        dismiss(animated: true, completion: nil)
+    }
+    
     @IBAction func returnButtonPressed(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
