@@ -34,7 +34,7 @@ class searchForNewTVC: UITableViewController {
         return cell
     }
 
-    @IBAction func backButtonPressed(_ sender: Any) {
+    @IBAction func returnButtonPressed(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
     /*

@@ -17,9 +17,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <navigationBar key="tableHeaderView" contentMode="scaleToFill" id="N66-xS-eFE">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <items>
+                                <navigationItem title="Search for friends" id="ugS-Ea-eQb">
+                                    <barButtonItem key="leftBarButtonItem" title="Return" id="R4O-ay-b7z">
+                                        <connections>
+                                            <action selector="returnButtonPressed:" destination="NfK-Ma-GDE" id="qkP-EL-nAc"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </navigationItem>
+                            </items>
+                        </navigationBar>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="elementCell" id="yAZ-L0-aab">
-                                <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="72" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="yAZ-L0-aab" id="lq3-jr-1Aq">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
@@ -56,35 +69,10 @@
                             <outlet property="delegate" destination="NfK-Ma-GDE" id="FR4-qx-1SS"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="YNz-0j-xOr">
-                        <barButtonItem key="leftBarButtonItem" systemItem="rewind" id="VWv-dE-j4E">
-                            <connections>
-                                <action selector="backButtonPressed:" destination="NfK-Ma-GDE" id="whZ-Ln-UxJ"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WYV-JC-ai3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1000.0000000000001" y="80.357142857142847"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="q35-dI-Y7x">
-            <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="rhQ-ep-RhG" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="8Jd-gb-omN" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="wbT-7a-PFn">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="NfK-Ma-GDE" kind="relationship" relationship="rootViewController" id="7Vs-rL-cs3"/>
-                    </connections>
-                </navigationController>
-            </objects>
-            <point key="canvasLocation" x="89.855072463768124" y="80.357142857142847"/>
         </scene>
     </scenes>
 </document>
