@@ -7,13 +7,20 @@
 //
 
 import UIKit
+import func AVFoundation.AVMakeRect
 
 class NewsTVC: UITableViewController {
+    
+    // it is also used in newsCellTVC class
+    static let notificationName = Notification.Name("isLikedNotification")
     
     var newsList : [NewsCellModel] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(isLikedNotificationRecieved(notificationData:)),
+                                               name: NewsTVC.notificationName, object: nil)
         
         tableView.register(UINib(nibName: "newsCell", bundle: nil),
                            forCellReuseIdentifier: "newsCell")
@@ -31,7 +38,7 @@ class NewsTVC: UITableViewController {
         newsList.append(NewsCellModel(source: "flattmatt", avatarImage: "flattmattLogo",
                                       optionalImage: "flattmattFujiImage",
                                       optionalText: "Будь спокоен как Фудзи",
-                                      amountOfLikes: 91, isLiked : false,
+                                      amountOfLikes: 91, isLiked : true,
                                       amountOfViews: 4431))
         newsList.append(NewsCellModel(source: "MAGIC MINIST", avatarImage: "magicministLogo",
                                       optionalImage: "magicministImage",
@@ -48,11 +55,34 @@ class NewsTVC: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return newsList.count
     }
+    
+    func makeLikeButtonText(amountOfLikes : Int, isLiked : Bool) -> String {
+        var textToReturn = ""
+        
+        if isLiked { textToReturn += "♥ " }
+        else { textToReturn += "♡ " }
+        
+        if amountOfLikes >= 1000 {
+            textToReturn += String(amountOfLikes / 1000) + "K"
+        }
+        else {
+            textToReturn += String(amountOfLikes)
+        }
+        
+        return textToReturn
+    }
+    
+    @objc func isLikedNotificationRecieved(notificationData : Notification) {
+        newsList[(notificationData.userInfo?["newsId"]) as? Int ?? -1].amountOfLikes =
+            (notificationData.userInfo?["newAmountOfLikes"] as? Int ?? -1)
+        
+        newsList[(notificationData.userInfo?["newsId"]) as? Int ?? -1].isLiked =
+            (notificationData.userInfo?["isLiked"] as? Bool ?? true)
+    }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "newsCell", for: indexPath) as! newsCellTVC
 
-        // Configure the cell...
         cell.sourceLabel.text = newsList[indexPath.row].source
         cell.avatarImageView.image =
             UIImage(named: newsList[indexPath.row].avatarImage)
@@ -60,43 +90,58 @@ class NewsTVC: UITableViewController {
             UIImage(named: newsList[indexPath.row].optionalImage)
         cell.optionalTextLabel.text = newsList[indexPath.row].optionalText
         cell.amountOfLikes = newsList[indexPath.row].amountOfLikes
+        cell.isLiked = newsList[indexPath.row].isLiked
+        cell.newsId = indexPath.row
         
-        if newsList[indexPath.row].amountOfLikes > 1000 {
-            cell.likeButton.setTitle("♡ " +
-                String(newsList[indexPath.row].amountOfLikes / 1000) + "K", for: .normal)
-        }
-        else {
-            cell.likeButton.setTitle("♡ " +
-                String(newsList[indexPath.row].amountOfLikes), for: .normal)
-        }
+        cell.likeButton.setTitle(
+            makeLikeButtonText(
+                amountOfLikes: newsList[indexPath.row].amountOfLikes,
+                isLiked: newsList[indexPath.row].isLiked),
+            for: .normal)
         
-        if newsList[indexPath.row].amountOfViews > 1000 {
+        if newsList[indexPath.row].amountOfViews >= 1000 {
             cell.amountOfViewsLabel.text = "👁‍🗨 " + String(newsList[indexPath.row].amountOfViews / 1000) + "K"
         }
         else {
             cell.amountOfViewsLabel.text = "👁‍🗨 " + String(newsList[indexPath.row].amountOfViews)
         }
         
-        let percentage = (cell.optionalImageImageView?.bounds.width ?? 326) / UIScreen.main.bounds.width
-        print("Соотношение между шириной imageView и рамками зоны")
-        print(percentage)
-        let result = UIImage(named: newsList[indexPath.row].optionalImage)!.size.width /
-            cell.optionalImageImageView!.bounds.width
-        
-        cell.optionalImageImageView.frame =
-            CGRect(x: 0, y: 0, width: cell.optionalImageImageView!.bounds.width,
-                   height: UIImage(named: newsList[indexPath.row].optionalImage)!.size.height / result)
-        print("Высота imageView")
-        print(UIImage(named: newsList[indexPath.row].optionalImage)!.size.height / result)
+//        let percentage = (cell.optionalImageImageView?.bounds.width ?? 326) / UIScreen.main.bounds.width
+//        print("Соотношение между шириной imageView и рамками зоны")
+//        print(percentage)
+//        let result = UIImage(named: newsList[indexPath.row].optionalImage)!.size.width /
+//            cell.optionalImageImageView!.bounds.width
+//
+//        cell.optionalImageImageView.frame =
+//            CGRect(x: 0, y: 0, width: cell.optionalImageImageView!.bounds.width,
+//                   height: UIImage(named: newsList[indexPath.row].optionalImage)!.size.height / result)
+//        print("Высота imageView")
+//        print(UIImage(named: newsList[indexPath.row].optionalImage)!.size.height / result)
         
         print("Высота после настройки")
         print(cell.optionalImageImageView.bounds.height)
         
-//        UIImage(named: newsList[indexPath.row].optionalImage)?.size.width
         print("")
 
         return cell
     }
+    
+    func resizeImage(imageName : String, targetSize: CGSize) -> UIImage? {
+        guard let image = UIImage(named: imageName) else {
+            return nil
+        }
+        
+        let finalRect = AVMakeRect(
+            aspectRatio: image.size, insideRect: CGRect(
+                origin: CGPoint(x: 0, y: 0), size: targetSize))
+        
+        let renderer = UIGraphicsImageRenderer(size: finalRect.size)
+        return renderer.image { (context) in
+            image.draw(in: CGRect(origin: .zero, size: finalRect.size))
+        }
+    }
+    
+    
 
     /*
     // In a storyboard-based application, you will often want to do a little preparation before navigation

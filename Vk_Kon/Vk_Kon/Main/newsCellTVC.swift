@@ -18,8 +18,8 @@ class newsCellTVC: UITableViewCell {
     @IBOutlet weak var amountOfViewsLabel: UILabel!
     
     var amountOfLikes : Int = 0
-    var liked : Bool = false
-//    inout newsList : [NewsCellModel] = []
+    var isLiked : Bool?
+    var newsId : Int?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -37,17 +37,29 @@ class newsCellTVC: UITableViewCell {
         optionalTextLabel.text = nil
         optionalImageImageView.image = nil
         likeButton.setTitle("", for: .normal)
+        amountOfLikes = 0
+        isLiked = nil
+        newsId = nil
+    }
+    
+    func sendLikeButtonNotification(newAmountOfLikes : Int, isLiked : Bool) {
+        NotificationCenter.default.post(
+            name: NewsTVC.notificationName, object: nil,
+            userInfo:["newAmountOfLikes": newAmountOfLikes, "isLiked": isLiked,
+                      "newsId": newsId ?? 0])
     }
     
     @IBAction func likeButtonPressed(_ sender: Any) {
-        if liked {
+        if isLiked ?? false {
+            sendLikeButtonNotification(newAmountOfLikes: amountOfLikes - 1, isLiked: false)
             amountOfLikes -= 1
-            liked = false
+            isLiked = false
             likeButton.setTitle("♡ " + String(amountOfLikes), for: .normal)
         }
         else {
+            sendLikeButtonNotification(newAmountOfLikes: amountOfLikes + 1, isLiked: true)
             amountOfLikes += 1
-            liked = true
+            isLiked = true
             likeButton.setTitle("♥ " + String(amountOfLikes), for: .normal)
         }
     }
