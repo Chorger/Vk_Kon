@@ -68,6 +68,9 @@
                                 <state key="normal" title="♡ 0">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="likeButtonPressed:" destination="YNg-Kq-6Z6" eventType="touchUpInside" id="0fY-Pz-I5l"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gda-lC-KkV">
                                 <rect key="frame" x="38" y="5" width="30" height="30"/>
