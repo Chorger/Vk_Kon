@@ -15,6 +15,10 @@ class NewsTVC: UITableViewController {
     static let notificationName = Notification.Name("isLikedNotification")
     
     var newsList : [NewsCellModel] = []
+    
+    override func viewDidAppear(_ animated: Bool) {
+        tableView.reloadData()
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,10 +29,6 @@ class NewsTVC: UITableViewController {
         tableView.register(UINib(nibName: "newsCell", bundle: nil),
                            forCellReuseIdentifier: "newsCell")
         
-        
-        tableView.rowHeight = UITableView.automaticDimension
-        
-        tableView.reloadData()
         
         newsList.append(NewsCellModel(source: "Dodo Pizza", avatarImage: "dodoImage",
                                       optionalImage: "dodoCupImage",
@@ -85,9 +85,19 @@ class NewsTVC: UITableViewController {
 
         cell.sourceLabel.text = newsList[indexPath.row].source
         cell.avatarImageView.image =
-            UIImage(named: newsList[indexPath.row].avatarImage)
+            resizeImage(
+                imageName: newsList[indexPath.row].avatarImage, targetRect: cell.avatarImageView!.bounds)
+        print("imageView width")
+        print(cell.optionalImageImageView.bounds.width)
+        print()
         cell.optionalImageImageView.image =
-            UIImage(named: newsList[indexPath.row].optionalImage)
+            resizeImage(
+                imageName: newsList[indexPath.row].optionalImage,
+                targetRect: CGRect(x: 0, y: 0,
+                                   width: cell.optionalImageImageView!.bounds.width,
+                                   height: 10000))
+        #warning("It is needed to do something with this height")
+        
         cell.optionalTextLabel.text = newsList[indexPath.row].optionalText
         cell.amountOfLikes = newsList[indexPath.row].amountOfLikes
         cell.isLiked = newsList[indexPath.row].isLiked
@@ -105,42 +115,23 @@ class NewsTVC: UITableViewController {
         else {
             cell.amountOfViewsLabel.text = "👁‍🗨 " + String(newsList[indexPath.row].amountOfViews)
         }
-        
-//        let percentage = (cell.optionalImageImageView?.bounds.width ?? 326) / UIScreen.main.bounds.width
-//        print("Соотношение между шириной imageView и рамками зоны")
-//        print(percentage)
-//        let result = UIImage(named: newsList[indexPath.row].optionalImage)!.size.width /
-//            cell.optionalImageImageView!.bounds.width
-//
-//        cell.optionalImageImageView.frame =
-//            CGRect(x: 0, y: 0, width: cell.optionalImageImageView!.bounds.width,
-//                   height: UIImage(named: newsList[indexPath.row].optionalImage)!.size.height / result)
-//        print("Высота imageView")
-//        print(UIImage(named: newsList[indexPath.row].optionalImage)!.size.height / result)
-        
-        print("Высота после настройки")
-        print(cell.optionalImageImageView.bounds.height)
-        
-        print("")
 
         return cell
     }
     
-    func resizeImage(imageName : String, targetSize: CGSize) -> UIImage? {
+    func resizeImage(imageName : String, targetRect: CGRect) -> UIImage? {
         guard let image = UIImage(named: imageName) else {
             return nil
         }
         
         let finalRect = AVMakeRect(
-            aspectRatio: image.size, insideRect: CGRect(
-                origin: CGPoint(x: 0, y: 0), size: targetSize))
+            aspectRatio: image.size, insideRect: targetRect)
         
         let renderer = UIGraphicsImageRenderer(size: finalRect.size)
         return renderer.image { (context) in
             image.draw(in: CGRect(origin: .zero, size: finalRect.size))
         }
     }
-    
     
 
     /*
