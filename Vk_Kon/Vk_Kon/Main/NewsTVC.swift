@@ -15,10 +15,6 @@ class NewsTVC: UITableViewController {
     static let notificationName = Notification.Name("isLikedNotification")
     
     var newsList : [NewsCellModel] = []
-    
-    override func viewDidAppear(_ animated: Bool) {
-//        tableView.reloadData()
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -87,9 +83,6 @@ class NewsTVC: UITableViewController {
         cell.avatarImageView.image =
             resizeImage(
                 imageName: newsList[indexPath.row].avatarImage, targetRect: cell.avatarImageView!.bounds)
-        print("imageView width")
-        print(cell.optionalImageImageView.bounds.width)
-        print()
         cell.optionalImageImageView.image =
             resizeImage(
                 imageName: newsList[indexPath.row].optionalImage,
