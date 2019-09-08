@@ -17,7 +17,7 @@ class NewsTVC: UITableViewController {
     var newsList : [NewsCellModel] = []
     
     override func viewDidAppear(_ animated: Bool) {
-        tableView.reloadData()
+//        tableView.reloadData()
     }
 
     override func viewDidLoad() {
@@ -94,9 +94,10 @@ class NewsTVC: UITableViewController {
             resizeImage(
                 imageName: newsList[indexPath.row].optionalImage,
                 targetRect: CGRect(x: 0, y: 0,
-                                   width: cell.optionalImageImageView!.bounds.width,
-                                   height: 10000))
-        #warning("It is needed to do something with this height")
+                                   // because I can't get UIImageView's size I have to
+                                   // get screen's size and subtract the constraints' size.
+                                   width: UIScreen.main.bounds.width - 16,
+                                   height: UIScreen.main.bounds.height))
         
         cell.optionalTextLabel.text = newsList[indexPath.row].optionalText
         cell.amountOfLikes = newsList[indexPath.row].amountOfLikes
